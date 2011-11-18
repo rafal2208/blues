@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />    
-    <?php include_title() ?>
+    <title>
+        <?php if (!include_slot('htmltitle')): ?>
+            The Blues
+        <?php endif; ?>
+    </title>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
