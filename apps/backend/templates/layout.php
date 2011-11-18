@@ -13,7 +13,7 @@
     </head>
     <body>
         <ul>
-            <li><a href="<?php echo public_path('') ?>">podgląd</a></li>          
+            <li><a href="#">podgląd</a></li>
             <?php if ($sf_user->isAuthenticated()): ?>
                 <li><a href="<?php echo url_for('song') ?>">songs</a></li>          
                 <li><a href="<?php echo url_for('clip') ?>">clips</a></li>

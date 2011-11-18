@@ -3,6 +3,11 @@ Options +FollowSymLinks +ExecCGI
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{HTTP_HOST} ^admin\.blues\.gajdaw\..*
+  RewriteRule ^(.*)$ backend.php [QSA,L]
+
+
   # uncomment the following line, if you are having trouble
   # getting no_script_name to work
   RewriteBase /
