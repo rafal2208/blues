@@ -3,7 +3,7 @@
 
 default:
   http_metas:
-    content-type: text/html
+    #content-type: text/html
 
   metas:
     #title:        symfony project
