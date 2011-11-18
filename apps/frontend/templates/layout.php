@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+    <meta property="og.image" content="http://blues.gajdaw.pl/images/blues-off.jpg" />
   </head>
 <body>
 
