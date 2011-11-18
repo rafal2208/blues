@@ -1,4 +1,14 @@
-all:
+prod:
   sf_guard_plugin:
-    success_signin_url:      
+    success_signin_url:      http://admin.blues.gajdaw.pl
+    success_signout_url:     http://blues.gajdaw.pl
+
+staging:
+  sf_guard_plugin:
+    success_signin_url:      http://admin.blues.gajdaw.pl
+    success_signout_url:     http://blues.gajdaw.pl
+
+dev:
+  sf_guard_plugin:
+    success_signin_url:      http://admin.blues.gajdaw.pl.localhost
     success_signout_url:     http://blues.gajdaw.pl.localhost
