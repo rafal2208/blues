@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-  
-  
   <head>
         <?php include_http_metas() ?>
         <?php include_metas() ?>
@@ -12,8 +9,9 @@
         <?php include_javascripts() ?>
     </head>
     <body>
+<?php use_helper('Crosslinks') ?>
         <ul>
-            <li><a href="#">podgląd</a></li>
+            <li><a href="<?php echo link_to_frontend('homepage') ?>">podgląd</a></li>
             <?php if ($sf_user->isAuthenticated()): ?>
                 <li><a href="<?php echo url_for('song') ?>">songs</a></li>          
                 <li><a href="<?php echo url_for('clip') ?>">clips</a></li>

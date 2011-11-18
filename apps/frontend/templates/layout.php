@@ -11,6 +11,7 @@
   </head>
 <body>
 
+<?php use_helper('Crosslinks') ?>
 
 <div id="content" lang="la">
     <div class="text">
@@ -36,7 +37,7 @@
 <footer>
     <div>
         &copy;2011 by <a href="http://gajdaw.pl">gajdaw</a> <br/><br />
-        <a href="#">admin</a>
+        <a href="<?php echo link_to_backend('homepage') ?>">admin</a>
     </div>
 </footer>
 
