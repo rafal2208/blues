@@ -39,10 +39,12 @@ all:
     use_database:           true
 
 
-    enabled_modules:      [ sfGuardAuth, todo ]
+    enabled_modules:      [ sfGuardAuth, message ]
 
     login_module:           sfGuardAuth
     login_action:           signin
 
     secure_module:          sfGuardAuth
     secure_action:          secure
+
+    check_lock:   true

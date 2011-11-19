@@ -34,6 +34,9 @@ all:
     param:
       generate_shortest_url:            true
       extra_parameters_as_query_string: true
+      context:
+        host:    <?php echo str_replace('http://', '', sfConfig::get('app_frontend_base_url')) ?>
+
 
   view_cache_manager:
     class: sfViewCacheManager

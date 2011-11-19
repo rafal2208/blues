@@ -10,7 +10,13 @@
 /^\.git\//
 /^00-extra\//
 /^cache\//
-/^data\//
+
+; folder data/ zawiera pliki .lck
+; musi byæ uwzglêdniony je¶li stosujemy project:disable
+;
+;/^data\//
+;
+
 /^config\/doctrine\//
 /^doc\//
 /^lib\/vendor\//
