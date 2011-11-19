@@ -35,6 +35,12 @@
             <li id="clips"><a href="<?php echo url_for('clip/index') ?>">clips<span></span></a></li>
         </ul>
     </nav>
+    <?php if (sfConfig::get('sf_environment') === 'dev'): ?>
+        <?php include_partial('global/dev') ?>
+    <?php endif; ?>
+    <?php if (sfConfig::get('sf_environment') === 'staging'): ?>
+        <?php include_partial('global/staging') ?>
+    <?php endif; ?>
   </div>      
 </header>
 
