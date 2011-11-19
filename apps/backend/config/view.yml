@@ -3,7 +3,7 @@
 
 default:
   http_metas:
-    content-type: text/html
+    #content-type: text/html
 
   metas:
     title:         The Blues
@@ -12,7 +12,8 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [main.css]
+  stylesheets:    [reset.css, style.css, pager2.css, content.css, admin.css]
+
 
   javascripts:    []
 

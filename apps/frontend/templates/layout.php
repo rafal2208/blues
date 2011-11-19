@@ -35,6 +35,25 @@
             <li id="clips"><a href="<?php echo url_for('clip/index') ?>">clips<span></span></a></li>
         </ul>
     </nav>
+
+    <nav id="admin">
+        <ul>
+            <li><a href="<?php echo link_to_backend('homepage') ?>">admin</a></li>
+<?php
+/*
+           $sf_user->isAuthenticated() always returns false in frontend when we use admin. domain!
+
+            <?php if ($sf_user->isAuthenticated()): ?>
+                <li><a href="<?php echo url_for('sfGuardAuth/signout') ?>">logout</a></li>
+                <li><a href="<?php echo url_for('tools/autoident') ?>">autoidents</a></li>
+            <?php endif; ?>
+*/
+?>
+
+        </ul>
+    </nav>
+
+
     <?php if (sfConfig::get('sf_environment') === 'dev'): ?>
         <?php include_partial('global/dev') ?>
     <?php endif; ?>
@@ -44,11 +63,10 @@
   </div>      
 </header>
 
-
 <footer>
     <div>
         &copy;2011 by <a href="http://gajdaw.pl">gajdaw</a> <br/><br />
-        <a href="<?php echo link_to_backend('homepage') ?>">admin</a>
+
     </div>
 </footer>
 
