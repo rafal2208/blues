@@ -1,6 +1,9 @@
 <?php slot('htmltitle') ?>
-    Brak strony / The Blues
+    Page not found / The Blues
 <?php end_slot() ?>
 
-<h1>Strona nie została znaleziona</h1>
+<h1>We are sorry,</h1>
 
+<p>
+Requested page was not found!
+</p>
