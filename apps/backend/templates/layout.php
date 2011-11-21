@@ -44,7 +44,7 @@
 
                 <nav id="admin">
                     <ul>
-                        <li><a href="<?php echo url_for('tools/autoident') ?>">autoidents</a></li>
+                        <!--  <li><a href="<?php echo url_for('tools/autoident') ?>">autoidents</a></li>  -->
                         <li><a href="<?php echo url_for('sfGuardAuth/signout') ?>">logout</a></li>
                     </ul>
                 </nav>

@@ -2,6 +2,36 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 
+clip_pager:
+  url:   /clips/:page.html
+  param: { module: clip, action: index }
+
+song_pager:
+  url:   /songs/:page.html
+  param: { module: song, action: index }
+
+artist_pager:
+  url:   /artists/:page.html
+  param: { module: artist, action: index }
+
+
+
+
+#
+# => homepage
+#artist_index:
+#  url:   /artist/:slug.html
+#  param: { module: artist, action: show }
+
+song_index:
+  url:   /songs.html
+  param: { module: song, action: index }
+
+
+clip_index:
+  url:   /clips.html
+  param: { module: clip, action: index }
+
 
 
 artist_show:
@@ -20,17 +50,6 @@ homepage:
   param: { module: artist, action: index, page: 1}
 
 
-clip_pager:
-  url:   /clips/:page.html
-  param: { module: clip, action: index }
-
-song_pager:
-  url:   /songs/:page.html
-  param: { module: song, action: index }
-
-artist_pager:
-  url:   /artists/:page.html
-  param: { module: artist, action: index }
 
 
 

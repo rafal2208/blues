@@ -9,6 +9,7 @@ prod:
 staging:
   .settings:
     no_script_name:         true
+    enabled_modules: [ default, sfGuardAuth ]
 
 dev:
   .settings:
@@ -17,6 +18,7 @@ dev:
     cache:                  false
     no_script_name:         true
     etag:                   false
+    enabled_modules: [ default, sfGuardAuth, sfGuardGroup, sfGuardUser, sfGuardPermission ]
 
 test:
   .settings:
@@ -37,9 +39,6 @@ all:
 
     # Enable the database manager
     use_database:           true
-
-
-    enabled_modules: [ default, sfGuardAuth, sfGuardGroup, sfGuardUser, sfGuardPermission ]
 
     login_module:           sfGuardAuth
     login_action:           signin
