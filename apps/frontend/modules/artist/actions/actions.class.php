@@ -25,6 +25,8 @@ class artistActions extends sfActions
       ->execute();
 */
 
+//    throw new sfError404Exception('Sprawdzamy strone błędu 404!');
+
     $this->pager = new sfDoctrinePager('Artist', 10);
     $this->pager->setQuery(Doctrine_Core::getTable('Artist')->createQuery('a'));
     $this->pager->setPage($request->getParameter('page', 1));
