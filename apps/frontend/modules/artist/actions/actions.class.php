@@ -39,7 +39,7 @@ class artistActions extends sfActions
    */
   public function executeShow(sfWebRequest $request)
   {
-    $this->artist = Doctrine_Core::getTable('Artist')->find(array($request->getParameter('id')));
+    $this->artist = Doctrine_Core::getTable('Artist')->findOneBySlug($request->getParameter('slug'));
     $this->forward404Unless($this->artist);
   }
 

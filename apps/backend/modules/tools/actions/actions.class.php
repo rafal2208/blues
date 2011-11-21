@@ -21,15 +21,39 @@ class toolsActions extends sfActions
    */
   public function executeAutoident(sfWebRequest $request)
   {
-        $clips = Doctrine_Core::getTable('Clip')
+    $clips = Doctrine_Core::getTable('Clip')
       ->createQuery('a')
       ->execute();
 
     foreach ($clips as $clip)
     {
       //$clip->autoident();
+      $clip->setSlug('');
       $clip->save();
     }
+
+
+    $songs = Doctrine_Core::getTable('Song')
+      ->createQuery('a')
+      ->execute();
+
+    foreach ($songs as $song)
+    {
+      $song->setSlug('');
+      $song->save();
+    }
+
+    $artist = Doctrine_Core::getTable('Artist')
+      ->createQuery('a')
+      ->execute();
+
+    foreach ($artist as $artist)
+    {
+      $artist->setSlug('');
+      $artist->save();
+    }
+
+
     $this->redirect('clip/index');
   }
   

@@ -1,6 +1,19 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+
+
+
+artist_show:
+  url:   /artist/:slug.html
+  param: { module: artist, action: show }
+
+song_show:
+  url:   /song/:slug.html
+  param: { module: song, action: show }
+
+
+
 # default rules
 homepage:
   url:   /

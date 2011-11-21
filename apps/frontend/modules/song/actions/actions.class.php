@@ -38,7 +38,7 @@ class songActions extends sfActions
    */      
   public function executeShow(sfWebRequest $request)
   {
-    $this->song = Doctrine_Core::getTable('Song')->find(array($request->getParameter('id')));
+    $this->song = Doctrine_Core::getTable('Song')->findOneBySlug($request->getParameter('slug'));
     $this->forward404Unless($this->song);
   }
 

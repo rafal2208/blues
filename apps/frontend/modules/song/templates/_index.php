@@ -5,7 +5,7 @@
 <ul>
     <?php foreach ($sf_data->getRaw('pager')->getResults() as $item): ?>
         <li>
-            <a href="<?php echo url_for('song/show?id='.$item->getId()) ?>">
+            <a href="<?php echo url_for('song/show?slug='.$item->getSlug()) ?>">
                 <?php echo $item->getTitle() ?>
             </a>
         </li>
