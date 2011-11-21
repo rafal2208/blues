@@ -10,5 +10,8 @@ security:  ~
 
 # insert your own filters here
 
+sfSslRequirement:
+  class: sfSslRequirementFilter
+
 cache:     ~
 execution: ~
