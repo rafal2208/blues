@@ -7,17 +7,17 @@
  * 
  * @property integer $artist_id
  * @property integer $song_id
- * @property Artist $artist
- * @property Song $song
+ * @property Artist $Artist
+ * @property Song $Song
  * 
  * @method integer    getArtistId()  Returns the current record's "artist_id" value
  * @method integer    getSongId()    Returns the current record's "song_id" value
- * @method Artist     getArtist()    Returns the current record's "artist" value
- * @method Song       getSong()      Returns the current record's "song" value
+ * @method Artist     getArtist()    Returns the current record's "Artist" value
+ * @method Song       getSong()      Returns the current record's "Song" value
  * @method ArtistSong setArtistId()  Sets the current record's "artist_id" value
  * @method ArtistSong setSongId()    Sets the current record's "song_id" value
- * @method ArtistSong setArtist()    Sets the current record's "artist" value
- * @method ArtistSong setSong()      Sets the current record's "song" value
+ * @method ArtistSong setArtist()    Sets the current record's "Artist" value
+ * @method ArtistSong setSong()      Sets the current record's "Song" value
  * 
  * @package    Blues
  * @subpackage model
@@ -38,20 +38,21 @@ abstract class BaseArtistSong extends sfDoctrineRecord
              'primary' => true,
              ));
 
-        $this->option('collate', 'utf8_polish_ci');
-        $this->option('charset', 'utf8');
-        $this->option('type', 'InnoDB');
+        $this->option('symfony', array(
+             'form' => false,
+             'filter' => false,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Artist as artist', array(
+        $this->hasOne('Artist', array(
              'local' => 'artist_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('Song as song', array(
+        $this->hasOne('Song', array(
              'local' => 'song_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));

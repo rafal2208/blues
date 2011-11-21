@@ -12,5 +12,14 @@ class SongForm extends BaseSongForm
 {
   public function configure()
   {
+
+    parent::setup();
+
+    unset(
+      $this['created_at'],
+      $this['updated_at']
+    );
+
+
   }
 }

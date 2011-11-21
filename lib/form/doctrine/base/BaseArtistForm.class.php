@@ -18,6 +18,8 @@ abstract class BaseArtistForm extends BaseFormDoctrine
       'id'         => new sfWidgetFormInputHidden(),
       'name'       => new sfWidgetFormInputText(),
       'slug'       => new sfWidgetFormInputText(),
+      'created_at' => new sfWidgetFormDateTime(),
+      'updated_at' => new sfWidgetFormDateTime(),
       'songs_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Song')),
     ));
 
@@ -25,6 +27,8 @@ abstract class BaseArtistForm extends BaseFormDoctrine
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'name'       => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'slug'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'created_at' => new sfValidatorDateTime(),
+      'updated_at' => new sfValidatorDateTime(),
       'songs_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Song', 'required' => false)),
     ));
 
@@ -52,19 +56,19 @@ abstract class BaseArtistForm extends BaseFormDoctrine
 
     if (isset($this->widgetSchema['songs_list']))
     {
-      $this->setDefault('songs_list', $this->object->songs->getPrimaryKeys());
+      $this->setDefault('songs_list', $this->object->Songs->getPrimaryKeys());
     }
 
   }
 
   protected function doSave($con = null)
   {
-    $this->savesongsList($con);
+    $this->saveSongsList($con);
 
     parent::doSave($con);
   }
 
-  public function savesongsList($con = null)
+  public function saveSongsList($con = null)
   {
     if (!$this->isValid())
     {
@@ -82,7 +86,7 @@ abstract class BaseArtistForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->songs->getPrimaryKeys();
+    $existing = $this->object->Songs->getPrimaryKeys();
     $values = $this->getValue('songs_list');
     if (!is_array($values))
     {
@@ -92,13 +96,13 @@ abstract class BaseArtistForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('songs', array_values($unlink));
+      $this->object->unlink('Songs', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('songs', array_values($link));
+      $this->object->link('Songs', array_values($link));
     }
   }
 

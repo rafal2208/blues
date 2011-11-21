@@ -19,6 +19,8 @@ abstract class BaseSongForm extends BaseFormDoctrine
       'title'        => new sfWidgetFormInputText(),
       'lyrics'       => new sfWidgetFormTextarea(),
       'slug'         => new sfWidgetFormInputText(),
+      'created_at'   => new sfWidgetFormDateTime(),
+      'updated_at'   => new sfWidgetFormDateTime(),
       'artists_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Artist')),
     ));
 
@@ -27,6 +29,8 @@ abstract class BaseSongForm extends BaseFormDoctrine
       'title'        => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'lyrics'       => new sfValidatorString(array('max_length' => 4096, 'required' => false)),
       'slug'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'created_at'   => new sfValidatorDateTime(),
+      'updated_at'   => new sfValidatorDateTime(),
       'artists_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Artist', 'required' => false)),
     ));
 
@@ -54,19 +58,19 @@ abstract class BaseSongForm extends BaseFormDoctrine
 
     if (isset($this->widgetSchema['artists_list']))
     {
-      $this->setDefault('artists_list', $this->object->artists->getPrimaryKeys());
+      $this->setDefault('artists_list', $this->object->Artists->getPrimaryKeys());
     }
 
   }
 
   protected function doSave($con = null)
   {
-    $this->saveartistsList($con);
+    $this->saveArtistsList($con);
 
     parent::doSave($con);
   }
 
-  public function saveartistsList($con = null)
+  public function saveArtistsList($con = null)
   {
     if (!$this->isValid())
     {
@@ -84,7 +88,7 @@ abstract class BaseSongForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->artists->getPrimaryKeys();
+    $existing = $this->object->Artists->getPrimaryKeys();
     $values = $this->getValue('artists_list');
     if (!is_array($values))
     {
@@ -94,13 +98,13 @@ abstract class BaseSongForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('artists', array_values($unlink));
+      $this->object->unlink('Artists', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('artists', array_values($link));
+      $this->object->link('Artists', array_values($link));
     }
   }
 
