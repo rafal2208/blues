@@ -48,10 +48,12 @@ abstract class BaseArtistSong extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Artist as artist', array(
              'local' => 'artist_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Song as song', array(
              'local' => 'song_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

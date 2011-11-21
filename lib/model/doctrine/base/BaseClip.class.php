@@ -74,7 +74,8 @@ abstract class BaseClip extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Song as song', array(
              'local' => 'song_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $sluggable0 = new Doctrine_Template_Sluggable(array(
              'unique' => true,
