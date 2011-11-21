@@ -18,7 +18,7 @@
 
 <?php use_helper('Crosslinks') ?>
 
-<div id="content" lang="la">
+<div id="content">
     <div class="text">
         <?php echo $sf_content ?>
     </div>
