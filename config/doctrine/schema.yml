@@ -4,6 +4,34 @@ options:
   type: InnoDB
 
 
+Artist:
+  options:
+    orderBy: name
+    collate: utf8_polish_ci
+    charset: utf8
+    type: InnoDB
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: false
+    Timestampable:
+  columns:
+    id:
+      type: integer
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(128)
+  relations:
+    Songs:
+      type: many
+      class: Song
+      local: artist_id
+      foreign: song_id
+      refClass: ArtistSong
+
 
 Song:
   options:
@@ -18,27 +46,57 @@ Song:
       canUpdate: false
     Timestampable:
   columns:
-#    id:
-#      type: integer
-#      primary: true
-#      notnull: true
-#      autoincrement: true
+    id:
+      type: integer
+      primary: true
+      notnull: true
+      autoincrement: true
     title:
       type: string(128)
     lyrics:
       type: string(4096)
   relations:
     Artists:
+      type: many
       class: Artist
       local: song_id
       foreign: artist_id
       refClass: ArtistSong
-      foreignAlias: Songs
+    Clips:
+      type: many
+      class: Clip
+      local: id
+      foreign: song_id
 
 
-
-
-
+ArtistSong:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  tableName: artist_has_song
+  columns:
+    artist_id:
+      type: integer
+      primary: true
+      notnull: true
+    song_id:
+      type: integer
+      primary: true
+      notnull: true
+  relations:
+    Artist:
+      type: one
+      class: Artist
+      local: artist_id
+      foreign: id
+      onDelete: CASCADE
+    Song:
+      type: one
+      class: Song
+      local: song_id
+      foreign: id
+      onDelete: CASCADE
 
 
 Clip:
@@ -54,103 +112,28 @@ Clip:
       canUpdate: false
     Timestampable:
   columns:
-#    id:
-#      type: integer
-#      primary: true
-#      notnull: true
-#      autoincrement: true
+    id:
+      type: integer
+      primary: true
+      notnull: true
+      autoincrement: true
     html:
       type: string(4096)
-
     ident:
       type: string(128)
-
     width:
       type: integer
       default: 420
-
     height:
       type: integer
       default: 315
-
     song_id:
       type: integer
 #      notnull: true
-
   relations:
-    song:
+    Song:
+      type: one
       class: Song
       local: song_id
       foreign: id
-      foreignAlias: clips
-      foreignType: many
-      type: one
       onDelete: "SET NULL"
-
-
-
-
-Artist:
-  options:
-    orderBy: name
-    collate: utf8_polish_ci
-    charset: utf8
-    type: InnoDB
-  actAs:
-    Sluggable:
-      unique: true
-      fields: [name]
-      canUpdate: false
-    Timestampable:
-  columns:
-#    id:
-#      type: integer
-#      primary: true
-#      notnull: true
-#      autoincrement: true
-    name:
-      type: string(128)
-  relations:
-    Songs:
-      class: Song
-      local: artist_id
-      foreign: song_id
-      refClass: ArtistSong
-      foreignAlias: Artists
-
-
-
-
-ArtistSong:
-  options:
-    symfony:
-      form:   false
-      filter: false
-  tableName: artist_has_song
-  columns:
-    artist_id:
-      type: integer
-      primary: true
-#      notnull: true
-    song_id:
-      type: integer
-      primary: true
-#      notnull: true
-  relations:
-    Artist:
-      class: Artist
-      local: artist_id
-#      foreign: id
-#      foreignAlias: songs
-#      foreignType: many
-#      type: one
-      onDelete: CASCADE
-    Song:
-      class: Song
-      local: song_id
-#      foreign: id
-#      foreignAlias: artists
-#      foreignType: many
-#      type: one
-      onDelete: CASCADE
-

@@ -11,7 +11,7 @@
  * @property integer $width
  * @property integer $height
  * @property integer $song_id
- * @property Song $song
+ * @property Song $Song
  * 
  * @method integer getId()      Returns the current record's "id" value
  * @method string  getHtml()    Returns the current record's "html" value
@@ -19,14 +19,14 @@
  * @method integer getWidth()   Returns the current record's "width" value
  * @method integer getHeight()  Returns the current record's "height" value
  * @method integer getSongId()  Returns the current record's "song_id" value
- * @method Song    getSong()    Returns the current record's "song" value
+ * @method Song    getSong()    Returns the current record's "Song" value
  * @method Clip    setId()      Sets the current record's "id" value
  * @method Clip    setHtml()    Sets the current record's "html" value
  * @method Clip    setIdent()   Sets the current record's "ident" value
  * @method Clip    setWidth()   Sets the current record's "width" value
  * @method Clip    setHeight()  Sets the current record's "height" value
  * @method Clip    setSongId()  Sets the current record's "song_id" value
- * @method Clip    setSong()    Sets the current record's "song" value
+ * @method Clip    setSong()    Sets the current record's "Song" value
  * 
  * @package    Blues
  * @subpackage model
@@ -72,7 +72,7 @@ abstract class BaseClip extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Song as song', array(
+        $this->hasOne('Song', array(
              'local' => 'song_id',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
